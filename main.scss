@@ -1,0 +1,309 @@
+@import url('https://fonts.googleapis.com/css2?family=Spartan:wght@300;500;700&display=swap');
+
+//COLORS
+$color-dark-magenta: hsl(300, 43%, 22%);
+$color-pink: hsl(333, 80%, 67%);
+$color-dark-gray-magenta: hsl(303, 10%, 53%);
+$color-light-gray-magenta: hsl(300, 24%, 96%);
+$color-white: hsl(0, 0%, 100%);
+
+//responsivness
+@mixin respond($breakpoint) {
+	@if $breakpoint == phone {
+		@media (max-width: 57.5em) {
+			@content;
+		}
+	}
+	@if $breakpoint == big {
+		@media (max-width: 69.4em) {
+			@content;
+		}
+	}
+	@if $breakpoint == desktop {
+		@media (max-width: 80em) {
+			@content;
+		}
+	}
+}
+
+@include respond(phone) {
+}
+
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+}
+
+html {
+	font-size: 62.5%;
+
+	@include respond(desktop) {
+		font-size: 55%;
+	}
+	@include respond(big) {
+		font-size: 50%;
+	}
+}
+
+body {
+	box-sizing: border-box;
+	font-family: 'Spartan', sans-serif;
+	font-size: 1.5rem;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	background-image: url('images/bg-pattern-top-desktop.svg'),
+		url('images/bg-pattern-bottom-desktop.svg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: -60rem -10rem, 5rem 10rem;
+	@include respond(phone) {
+		margin: 3rem 1rem;
+		height: auto;
+		
+	}
+}
+
+.container {
+	width: 80%;
+	&__top {
+		display: flex;
+	}
+	&__top {
+		@include respond(phone) {
+			flex-direction: column;
+			width: 100%;
+		}
+	}
+}
+
+.header {
+	padding: 2rem;
+	padding-right: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	width: 45%;
+
+	@include respond(big) {
+		width: 40%;
+	}
+
+	@include respond(phone) {
+		width: 100%;
+		justify-content: center;
+		text-align: center;
+	}
+
+	&__main {
+		color: $color-dark-magenta;
+		font-size: 5rem;
+		line-height: 5rem;
+		width: 12ch;
+		margin-bottom: 2rem;
+		font-weight: 700;
+
+		@include respond(big) {
+			font-size: 4rem;
+		}
+
+		@include respond(phone) {
+			text-align: center;
+			width: 90%;
+			margin: 0 auto;
+			margin-bottom: 1rem;
+		}
+	}
+
+	&__text {
+		color: $color-dark-gray-magenta;
+		line-height: 2rem;
+		@include respond(big) {
+			font-size: 1.3rem;
+		}
+		@include respond(phone) {
+			width: 60%;
+			margin: 0 auto;
+		}
+	}
+}
+
+.footer {
+	width: 100%;
+	padding: 2rem 0;
+	padding-bottom: 2rem;
+	display: flex;
+	align-items: flex-end;
+	@include respond(phone) {
+		align-items: center;
+	}
+
+	&__list {
+		list-style: none;
+		height: 22rem;
+		@include respond(phone) {
+			height: 30rem;
+		}
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+		align-items: flex-end;
+
+		@include respond(phone) {
+			align-items: center;
+		}
+	}
+
+	&__list-item {
+		background: $color-light-gray-magenta;
+		display: flex;
+		width: 40rem;
+		align-items: center;
+		border-radius: 1rem;
+		padding: 2rem 0;
+		@include respond(phone) {
+			flex-direction: column;
+		}
+
+		&:first-child {
+			margin-right: 18rem;
+			@include respond(phone) {
+				margin: 0;
+			}
+		}
+
+		&:nth-child(2) {
+			margin-right: 10rem;
+			@include respond(phone) {
+				margin: 0;
+			}
+		}
+
+		&:last-child {
+			margin-right: 2rem;
+			@include respond(phone) {
+				margin: 0;
+			}
+		}
+	}
+
+	&__star-box {
+		width: 85px;
+		height: 17px;
+		margin: 0 3rem;
+		background-image: url('images/icon-star.svg');
+		@include respond(phone) {
+			margin-bottom: 1rem;
+		}
+	}
+	&__label {
+		height: 17px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: $color-dark-magenta;
+		font-weight: 700;
+		font-size: 1.4rem;
+	}
+}
+
+.main {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(31.5rem, 1fr));
+	grid-template-rows: 24rem;
+	margin: 2rem;
+	gap: 3rem;
+	font-size: 1.2rem;
+	justify-content: center;
+
+	@include respond(big) {
+		grid-template-columns: repeat(3, minmax(20rem, 1fr));
+	}
+
+	@include respond(phone) {
+		grid-template-columns: 40rem;
+	}
+
+	&__card {
+		padding: 3rem 3rem;
+		border-radius: 1rem;
+		background: $color-dark-magenta;
+		color: $color-light-gray-magenta;
+
+		&:nth-child(2) {
+			margin-top: 2.5rem;
+			height: 24rem;
+
+			@include respond(phone) {
+				margin: 0;
+			}
+		}
+
+		&:last-child {
+			margin-top: 5rem;
+			height: 24rem;
+			@include respond(phone) {
+				margin: 0;
+				margin-bottom: 5rem;
+			}
+		}
+	}
+
+	&__card-header {
+		display: flex;
+		align-items: center;
+		color: $color-white;
+	}
+
+	&__person-image {
+		border-radius: 100vh;
+		margin-right: 2rem;
+		width: 5rem;
+		height: 5rem;
+	}
+
+	&__text {
+		margin-top: 2rem;
+		line-height: 2rem;
+		color: $color-light-gray-magenta;
+	}
+
+	&__client {
+		font-size: 1.2rem;
+	}
+
+	&__subheader {
+		display: block;
+		margin-top: 0.75rem;
+		font-weight: 300;
+		color: $color-pink;
+	}
+}
+
+.attribution {
+	position: absolute;
+	left: 50%;
+	bottom: 2rem;
+	transform: translateX(-50%);
+	color: $color-dark-gray-magenta;
+	font-size: 1.4rem;
+	@include respond(phone) {
+		bottom: .5rem
+	}
+
+
+	& > a {
+		text-decoration: none;
+		color: $color-dark-magenta;
+	}
+
+	& > a:hover {
+		color: $color-pink;
+	}
+}
